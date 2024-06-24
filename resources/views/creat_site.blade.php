@@ -74,6 +74,30 @@
         cursor: pointer;
     }
 </style>
+<style>
+    ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+        border-radius: 10px;
+
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-color: #97c5d9;
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #1967D2;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-corner {
+        display: none;
+    }
+</style>
 
 <body class="mb-48 bg-gray-100">
     <nav class="sticky top-0 flex justify-between items-center mb-4 h-16 bg-laravel">
