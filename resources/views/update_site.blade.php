@@ -23,7 +23,7 @@
             },
         };
     </script>
-    <title>Site</title>
+    <title>Modifier Site</title>
 </head>
 <style>
     
@@ -84,8 +84,7 @@
             <li>
                 <a href="/logout"
                     ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    LogOut</a
-                >
+                    Se déconnecter</a >
             </li>
         </ul>
     </nav>
@@ -99,7 +98,7 @@
             <div class="bg-gray-50 border border-gray-200 shadow-md p-10 rounded max-w-lg mx-auto mt-24">
                 <header class="text-center">
                     <h2 class="text-3xl font-bold uppercase mb-1">
-                        Modifier Site
+                        Modifier Le Site
                     </h2>
                 </header>
 
@@ -119,7 +118,7 @@
                     </div>
                     <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
                     <div class="mb-6">
-                        <label for="title" class="inline-block text-lg mb-2">Website Title </label>
+                        <label for="title" class="inline-block text-lg mb-2">Titre </label>
                         <input type="text" value="{{$site->titre}}" class="border border-gray-200 rounded p-2 w-full" name="titre"
                             placeholder="title"  />
                         @error('titre')
@@ -128,7 +127,7 @@
                     </div>
                     
                     <div class="mb-6">
-                        <label for="company" class="inline-block text-lg mb-2">Link </label>
+                        <label for="company" class="inline-block text-lg mb-2">Lien </label>
                         <input type="url" value="{{$site->lien}}" class="border border-gray-200 rounded p-2 w-full" name="lien"
                             placeholder="Lien"  />
                         @error('lien')
@@ -136,8 +135,8 @@
                         @enderror                    
                     </div>
                     <div class="mb-6">
-                        <label for="categorier" class="inline-block text-lg mb-2">Categorier </label>
-                        <select name="categorier" value="{{$site->categorier}}" class="border border-gray-200 rounded p-2 w-full" id="categorier">
+                        <label for="categorier" class="inline-block text-lg mb-2">Catégorie </label>
+                        <select name="categorier" value="{{$site->categorier}}" class="border border-gray-200 rounded p-2 w-full" id="Catégorie">
                             @foreach ($categorier as $item)
                                 @if ($item->id==$site->id_cat)
                                     <option value="{{$item->id}}" selected >{{$item->categorier}} </option>
@@ -153,7 +152,7 @@
                         @enderror                    
                     </div>
                     <div class="mb-6">
-                        <label for="tite" class="inline-block text-lg mb-2">Website description </label>
+                        <label for="tite" class="inline-block text-lg mb-2">Description du site Web</label>
                         <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52" placeholder="description">{{$site->description}}</textarea>
                         @error('description')
                             <p class="text-red-500 test-xs mt-1">{{$message}}</p>

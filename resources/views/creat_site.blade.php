@@ -23,7 +23,7 @@
             },
         };
     </script>
-    <title>Site</title>
+    <title>Ajouter Site</title>
 </head>
 <style>
     
@@ -84,8 +84,7 @@
             <li>
                 <a href="/logout"
                     ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    LogOut</a
-                >
+                     Se déconnecter</a>
             </li>
         </ul>
     </nav>
@@ -99,7 +98,7 @@
             <div class="bg-gray-50 border border-gray-200 shadow-md p-10 rounded max-w-lg mx-auto mt-24">
                 <header class="text-center">
                     <h2 class="text-3xl font-bold uppercase mb-1">
-                        Ajouter Site
+                        AJOUTER UN SITE
                     </h2>
                 </header>
 
@@ -117,7 +116,7 @@
                     </div>
                     <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
                     <div class="mb-6">
-                        <label for="title" class="inline-block text-lg mb-2">Website Title </label>
+                        <label for="title" class="inline-block text-lg mb-2">Titre du site Web </label>
                         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="titre"
                             placeholder="title"  />
                         @error('titre')
@@ -126,7 +125,7 @@
                     </div>
                     
                     <div class="mb-6">
-                        <label for="company" class="inline-block text-lg mb-2">Link </label>
+                        <label for="company" class="inline-block text-lg mb-2">Lien </label>
                         <input type="url" class="border border-gray-200 rounded p-2 w-full" name="lien"
                             placeholder="Lien"  />
                         @error('lien')
@@ -134,20 +133,20 @@
                         @enderror                    
                     </div>
                     <div class="mb-6">
-                        <label for="categorier" class="inline-block text-lg mb-2">Categorier </label>
-                        <select name="categorier" class="border border-gray-200 rounded p-2 w-full" id="categorier">
+                        <label for="categorier" class="inline-block text-lg mb-2">Catégorie </label>
+                        <select name="categorier" class="border border-gray-200 rounded p-2 w-full" id="Catégorie">
                             @foreach ($categorier as $item)
                                 <option value="{{$item->id}}">{{$item->categorier}} </option>
                                 @endforeach
                                 <option value="-1">Autre </option>
                             </select>
-                            <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full" name="new_cat" placeholder="new categorier"  />
+                            <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full" name="new_cat" placeholder="Nouvelle Catégorie"  />
                         @error('categorier')
                             <p class="text-red-500 test-xs mt-1">{{$message}}</p>
                         @enderror                    
                     </div>
                     <div class="mb-6">
-                        <label for="tite" class="inline-block text-lg mb-2">Website description </label>
+                        <label for="tite" class="inline-block text-lg mb-2">Description du site Web </label>
                         <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52" placeholder="description"></textarea>
                         @error('description')
                             <p class="text-red-500 test-xs mt-1">{{$message}}</p>
@@ -156,7 +155,7 @@
 
                     <div class="mb-6">
                         <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-laravel2 text-lg">
-                            Submit
+                            Soumettre
                         </button>
                     </div>
                 </form>

@@ -37,9 +37,9 @@ class categorierController extends Controller
     }
 
 
-    function delete(categorier $category)
+    function delete(Categorier $categorier)
     {
-        $category->delete();
+        $categorier->delete();
         return redirect('/')->with('success', 'Categoy deleted successfully');
     }
 }

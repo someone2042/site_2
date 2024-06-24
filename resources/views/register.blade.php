@@ -21,7 +21,7 @@
             },
         };
     </script>
-    <title>Site</title>
+    <title>Ajouter admin</title>
 </head>
 
 <body class="mb-48">
@@ -44,18 +44,21 @@
             <div class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
                 <header class="text-center">
                     <h2 class="text-2xl font-bold uppercase mb-1">
-                        Register
+                        REGISTRE
                     </h2>
-                    <p class="mb-4">Create an account</p>
+                    <p class="mb-4">Créer un compte</p>
                 </header>
 
                 <form action="/store" method="POST">
                     @csrf
                     <div class="mb-6">
                         <label for="name" class="inline-block text-lg mb-2">
-                            Name
+                            Nom
                         </label>
                         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" value="{{old('name')}}"/>
+                        @error('name')
+                        <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
+                        @enderror
                     </div>
 
                     <div class="mb-6">
@@ -69,7 +72,7 @@
 
                     <div class="mb-6">
                         <label for="password" class="inline-block text-lg mb-2">
-                            Password
+                            Mot de passe
                         </label>
                         <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password" />
                         @error('password')
@@ -79,7 +82,7 @@
 
                     <div class="mb-6">
                         <label for="password2" class="inline-block text-lg mb-2">
-                            Confirm Password
+                            Confirmez le mot de passe
                         </label>
                         <input type="password" class="border border-gray-200 rounded p-2 w-full"
                             name="password_confirmation" />
@@ -90,7 +93,7 @@
                     </div>
                     <div class="mb-6">
                         <div class="flex w-full m-auto items-center">
-                            <p class="w-full inline-block text-lg">Role:</p>
+                            <p class="w-full inline-block text-lg">Rôle:</p>
                             <div class="w-full">
                                 <label for="A">Admin</label>
                                 <input type="radio" id='A' class="border border-gray-200 rounded p-2" name="role" value="A" />
@@ -107,7 +110,7 @@
 
                     <div class="mb-6">
                         <button type="submit" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-                            Sign Up
+                            S'inscrire
                         </button>
                     </div>
                 </form>

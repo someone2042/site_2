@@ -24,9 +24,9 @@
                 },
             };
         </script>
-        <title>Site</title>
+        <title>Login</title>
     </head>
-    <body class="mb-48">
+    <body class="mb-48 bg-slate-100">
         <nav class="sticky top-0 flex justify-between items-center mb-4 h-16 bg-laravel">
             <a href="/">
                 <p class="text-2xl font-medium text-white ml-4">Polynet</p>
@@ -39,20 +39,19 @@
         <main>
             <div class="mx-4">
                 <div
-                    class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
+                    class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24 shadow-lg"
                 >
                     <header class="text-center">
                         <h2 class="text-2xl font-bold uppercase mb-1">
-                            Log In
+                            Se connecter
                         </h2>
-                        <p class="mb-4">Log in</p>
                     </header>
 
                     <form action="/authentification" method="POST">
                         @csrf
                         <div class="mb-6">
                             <label for="email" class="inline-block text-lg mb-2"
-                                >Email</label
+                                >E-mail</label
                             >
                             <input
                                 type="email"
@@ -70,7 +69,7 @@
                                 for="password"
                                 class="inline-block text-lg mb-2"
                             >
-                                Password
+                            Mot de passe
                             </label>
                             <input
                                 type="password"
@@ -87,7 +86,7 @@
                                 type="submit"
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Sign In
+                            Se connecter
                             </button>
                         </div>
 

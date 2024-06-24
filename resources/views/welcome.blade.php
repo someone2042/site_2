@@ -33,12 +33,34 @@
             -webkit-line-clamp: 2; /* number of lines to show */
             line-clamp: 2; 
             -webkit-box-orient: vertical;
-        }
-        .h-calc{
-            height: calc(100vh - 64px);
-        }
+            }
+            .h-calc{
+                height: calc(100vh - 64px);
+            }
+            ::-webkit-scrollbar {
+                width: 7px;
+                height: 7px;
+                border-radius: 10px;
+
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background-color: #97c5d9;
+                box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #1967D2;
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-corner {
+                display: none;
+            }
         </style>
-        <title>Site</title>
+        <title>Accuil</title>
     </head>
     <body class="mb-36 h-full">
         <nav class=" sticky top-0 flex justify-between items-center h-16 bg-laravel">
@@ -69,9 +91,18 @@
             <ul class="flex space-x-6 mr-6 text-lg items-center text-white">
                 @auth
                     <li>
+                        <abbr title="{{auth()->user()->name}}">
+                            <a href="/profile"  ><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="9" r="3" stroke="#fff" stroke-width="1.5"/>
+                                <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+                                <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg></a>
+                        </abbr>
+                    </li>    
+                    <li>
                         <a href="/logout"
                             ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                            LogOut</a
+                            Se déconnecter</a
                         >
                     </li>    
                 @endauth
@@ -79,7 +110,7 @@
                 <li>
                     <a href="/admin"
                         ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Login</a
+                        Se connecter</a
                     >
                 </li>
                 @endif
@@ -106,7 +137,7 @@
                     </g>
                     </svg>
                     <p class="ml-4">
-                        Register
+                        Ajouter un admin
                     </p>
                 </a>
             @endif
@@ -126,7 +157,7 @@
                         </svg>
                     </abbr>
                     <p class="ml-4">
-                        Add Site
+                        Ajouter un site
                     </p>
                 </a>
                 <button onclick="show()" href="/create" class="flex text-laravel font-medium text items-center  pl-4 mt-6">
@@ -145,7 +176,7 @@
                         </svg>
                     </abbr>
                     <p class="ml-4">
-                        Add Categorier
+                        Ajouter une catégorie
                     </p>
                 </button>
                 <form action="/categorier/store" method="POST" id="add" class="flex items-center justify-around w-full hidden">
@@ -185,7 +216,7 @@
                         </g>
                     </svg>
                     <p class="ml-4">
-                        Categoriers
+                        Catégories
                     </p>
                 </a>
                 @foreach ($categorier as $item)
@@ -193,6 +224,17 @@
                     <div class="flex items-center justify-between  hover:bg-blue-100 w-full h-full p-2 pl-12">
                             @csrf
                             @method('PUT')
+                            @auth
+                            <button type="submit" id="s-{{$item->id}}" class="hidden" form="hadik-{{$item->id}}">
+                                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 11V17" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11V17" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 7H20" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                            </button>
+                            @endauth
                             <a href="/{{$item->id}}">
                                 <p id="p-{{$item->id}}" class="ml-4 text-laravel capitalize">
                                     {{$item->categorier}}
@@ -215,6 +257,10 @@
                             @endauth
                         </div>
                         </form>
+                        <form action="/categorier/delete/{{$item->id}}" method="POST" id="hadik-{{$item->id}}" onsubmit="warnning()">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                 @endforeach
             </div>
             <script>
@@ -223,17 +269,20 @@
                     var input = document.getElementById('input-' + id);
                     var saveButton = document.getElementById('save-' + id);
                     var Button = document.getElementById('b-' + id);
+                    var hadik = document.getElementById('s-' + id);
                 
                     if (p.style.display === 'none') {
                         p.style.display = 'block';
                         Button.style.display='block';
                         input.style.display = 'none';
                         saveButton.style.display = 'none';
+                        hadik.style.display = 'none';
                     } else {
                         p.style.display = 'none';
                         Button.style.display='none';
                         input.style.display = 'block';
                         saveButton.style.display = 'block';
+                        hadik.style.display = 'block';
                         input.focus();
                     }
                 }
@@ -409,4 +458,11 @@
         </script>
         
     @enderror
+    <script>
+         function warnning() {
+        if (!confirm("Voulez-vous vraiment supprimer cette categorier ?")) {
+        event.preventDefault();
+        }
+    }
+    </script>
     </html>
