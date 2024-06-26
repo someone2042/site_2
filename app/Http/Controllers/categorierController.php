@@ -37,8 +37,9 @@ class categorierController extends Controller
     }
 
 
-    function delete(Categorier $categorier)
+    function delete(Request $request)
     {
+        $categorier = categorier::find($request->id);
         $categorier->delete();
         return redirect('/')->with('success', 'Categoy deleted successfully');
     }

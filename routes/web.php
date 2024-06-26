@@ -32,7 +32,7 @@ Route::delete('/site/delete/{site}', [SiteController::class, 'delete'])->name('s
 
 Route::post('/categorier/store', [categorierController::class, 'store'])->name('categorier.store')->middleware('auth');
 Route::put('/categorier/update/{categorier}', [categorierController::class, 'update'])->name('categorier.update')->middleware('auth');
-Route::delete('/categorier/delete/{categorier}', [categorierController::class, 'delete'])->name('categorier.delete')->middleware('auth');
+Route::delete('/categorier/delete', [categorierController::class, 'delete'])->name('categorier.delete')->middleware('auth');
 
 Route::get('/toggle-sidebar', function () {
     $isOpen = session('sidebar_open', false); // Get current state, default is false

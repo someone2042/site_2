@@ -63,6 +63,39 @@
         <title>Accuil</title>
     </head>
     <body class="mb-36 h-full">
+
+        <div data-value="" class="fixed z-30 font-mon bg-red-50 grid hidden rounded-md shadow-md" id="deleteGroupModal" style="width: 400px; justify-items: center; align-content: space-evenly ;height: 200px; left: 50%; top:50%; transform: translate(-50%, -50%); tabindex="-1" aria-labelledby="deleteGroupModalLabel" aria-hidden="true">
+            <div class="grid justify-items-center">
+               <svg fill="#eed202" height="60px" width="60px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27.963 27.963" xml:space="preserve">
+                  <g>
+                     <g id="c129_exclamation">
+                        <path d="M13.983,0C6.261,0,0.001,6.259,0.001,13.979c0,7.724,6.26,13.984,13.982,13.984s13.98-6.261,13.98-13.984
+                           C27.963,6.259,21.705,0,13.983,0z M13.983,26.531c-6.933,0-12.55-5.62-12.55-12.553c0-6.93,5.617-12.548,12.55-12.548
+                           c6.931,0,12.549,5.618,12.549,12.548C26.531,20.911,20.913,26.531,13.983,26.531z"/>
+                        <polygon points="15.579,17.158 16.191,4.579 11.804,4.579 12.414,17.158 		"/>
+                        <path d="M13.998,18.546c-1.471,0-2.5,1.029-2.5,2.526c0,1.443,0.999,2.528,2.444,2.528h0.056c1.499,0,2.469-1.085,2.469-2.528
+                           C16.441,19.575,15.468,18.546,13.998,18.546z"/>
+                     </g>
+                     <g id="Capa_1_207_">
+                     </g>
+                  </g>
+               </svg>
+                  <h5 class="font-semibold text-lg" id="deleteGroupModalLabel">Confirmation de la suppression</h5>
+            </div>
+            <div class="text-sm text-gray-900">
+                Êtes-vous sûr de vouloir supprimer cette catégorie ?
+            </div>
+            <div class="flex w-2/3 justify-around">
+                  <button type="button" class="btn btn-secondary" onclick="hide();toggleEdit(this.parentElement.parentElement.dataset.value)" data-bs-dismiss="modal">Annuler</button>
+                  <form action="/categorier/delete/" method="POST">  
+                    @csrf 
+                    @method('DELETE')
+                    <input type="hidden" name="id" id="deleteGroupId" value="">
+                    <button type="submit" class="bg-red-500 text-white p-2 rounded-sm hover:scale-110 hover:bg-red-400">Supprimer</button>
+                  </form>
+            </div>
+         </div>
+
         <nav class=" sticky top-0 flex justify-between items-center h-16 bg-laravel">
             <div class="flex">
                 <button id="toggleButton" class="ml-2 mr-4" style="display:block">       
@@ -139,21 +172,18 @@
                     </p>
                 </a>
                 <a href="/update/admin" class="flex text-laravel font-medium text items-center pl-4 mt-6">
-                    <svg fill="#1967D2" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                        viewBox="0 0 328 328" xml:space="preserve">
-                    <g id="XMLID_455_">
-                        <path id="XMLID_458_" d="M15,286.75h125.596c19.246,24.348,49.031,40,82.404,40c57.897,0,105-47.103,105-105s-47.103-105-105-105
-                            c-34.488,0-65.145,16.716-84.298,42.47c-7.763-1.628-15.694-2.47-23.702-2.47c-63.411,0-115,51.589-115,115
-                            C0,280.034,6.716,286.75,15,286.75z M223,146.75c41.355,0,75,33.645,75,75s-33.645,75-75,75s-75-33.645-75-75
-                            S181.645,146.75,223,146.75z"/>
-                        <path id="XMLID_461_" d="M115,1.25c-34.602,0-62.751,28.15-62.751,62.751S80.398,126.75,115,126.75
-                            c34.601,0,62.75-28.148,62.75-62.749S149.601,1.25,115,1.25z"/>
-                        <path id="XMLID_462_" d="M193,236.75h15v15c0,8.284,6.716,15,15,15s15-6.716,15-15v-15h15c8.284,0,15-6.716,15-15s-6.716-15-15-15
-                            h-15v-15c0-8.284-6.716-15-15-15s-15,6.716-15,15v15h-15c-8.284,0-15,6.716-15,15S184.716,236.75,193,236.75z"/>
-                    </g>
-                    </svg> 
+                    <svg width="20px" height="20px" viewBox="0 -1.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-100.000000, -2122.000000)" fill="#1967D2">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M63.9996063,1963 C63.9996063,1963.552 63.5516063,1964 62.9996063,1964 L56.9996063,1964 C56.4476063,1964 55.9996063,1963.552 55.9996063,1963 C55.9996063,1962.448 56.4476063,1962 56.9996063,1962 L62.9996063,1962 C63.5516063,1962 63.9996063,1962.448 63.9996063,1963 M51.9726063,1970.902 C51.9586063,1970.902 51.9446063,1970.9 51.9306063,1970.9 C51.9156063,1970.9 51.9026063,1970.902 51.8876063,1970.902 C50.8046063,1970.879 49.9306063,1969.995 49.9306063,1968.906 C49.9306063,1967.803 50.8276063,1966.906 51.9306063,1966.906 C53.0326063,1966.906 53.9306063,1967.803 53.9306063,1968.906 C53.9306063,1969.995 53.0556063,1970.879 51.9726063,1970.902 M54.9556063,1971.495 C55.7856063,1970.527 56.1856063,1969.18 55.7546063,1967.724 C55.3576063,1966.38 54.2276063,1965.32 52.8616063,1965.011 C50.2476063,1964.422 47.9306063,1966.393 47.9306063,1968.906 C47.9306063,1969.899 48.3056063,1970.796 48.9036063,1971.495 C46.3206063,1972.55 44.4126063,1974.997 44.0096063,1977.867 C43.9256063,1978.466 44.4036063,1979 45.0086063,1979 C45.5026063,1979 45.9206063,1978.637 45.9906063,1978.147 C46.4026063,1975.24 48.8866063,1972.923 51.8876063,1972.902 C51.9026063,1972.902 51.9156063,1972.906 51.9306063,1972.906 C51.9446063,1972.906 51.9576063,1972.902 51.9726063,1972.902 C54.9736063,1972.923 57.4576063,1975.24 57.8696063,1978.148 C57.9396063,1978.637 58.3576063,1979 58.8526063,1979 C59.4566063,1979 59.9346063,1978.466 59.8506063,1977.867 C59.4476063,1974.997 57.5396063,1972.551 54.9556063,1971.495" id="profile_minus-[#1353]">
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                     <p class="ml-4">
-                        Ajouter un admin
+                        Gérer les admin
                     </p>
                 </a>
             @endif
@@ -241,7 +271,7 @@
                             @csrf
                             @method('PUT')
                             @auth
-                            <button type="submit" id="s-{{$item->id}}" class="hidden" form="hadik-{{$item->id}}">
+                            <div id="s-{{$item->id}}" class="hidden cursor-pointer" onclick="warnning({{$item->id}})">
                                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10 11V17" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M14 11V17" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -249,7 +279,7 @@
                                     <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#1967D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                            </button>
+                            </div>
                             @endauth
                             <a href="/{{$item->id}}">
                                 <p id="p-{{$item->id}}" class="ml-4 text-laravel capitalize">
@@ -273,7 +303,7 @@
                             @endauth
                         </div>
                         </form>
-                        <form action="/categorier/delete/{{$item->id}}" method="POST" id="hadik-{{$item->id}}" onsubmit="warnning()">
+                        <form action="/categorier/delete/{{$item->id}}" method="POST" id="hadik-{{$item->id}}" onsubmit="warnning({{$item->id}})">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -463,6 +493,8 @@
             // 
             show();
         }
+    </script>
+    <script>
         function show(){
             var form = document.getElementById('add');
             form.classList.toggle('hidden');
@@ -475,10 +507,17 @@
         
     @enderror
     <script>
-         function warnning() {
-        if (!confirm("Voulez-vous vraiment supprimer cette categorier ?")) {
-        event.preventDefault();
+         function warnning(id) {
+            document.getElementById('deleteGroupModal').classList.remove('hidden');
+            document.getElementById('deleteGroupModal').setAttribute("data-value", id);
+            const deleteGroupIdInput = document.getElementById('deleteGroupId');
+            // Set the hidden input field's value to the retrieved group ID
+            deleteGroupIdInput.value = id;
         }
-    }
+    </script>
+    <script>
+        function hide() {
+        document.getElementById('deleteGroupModal').classList.add('hidden');
+        }
     </script>
     </html>
