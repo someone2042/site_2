@@ -1,3 +1,4 @@
+
 <!Doctype html>
 <html>
 
@@ -55,28 +56,29 @@
     </nav>
    <main class="grid w-full justify-items-center">
         <p class="text-2xl w-4/5 m-3 pl-6 underline underline-offset-4">#Admins</p>
-        <div class="w-4/5 h-lot mb-10 overflow-auto">
-            <table class="border-collapse border border-slate-500 w-full">
-                <thead>
-                  <tr>
-                    <th class="border border-slate-600 p-2 font-mon">Id</th>
-                    <th class="border border-slate-600 p-2 font-mon">Name</th>
-                    <th class="border border-slate-600 p-2 font-mon">Email</th>
-                    <th class="border border-slate-600 p-2 font-mon">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach($admins as $admin)
+        
+                    <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-4/5 mb-10">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                         <tr>
-                            <td class="border border-slate-700 p-2 font-mon w-16 text-center">#{{$admin->id}}</td>
-                            <td class="border border-slate-700 p-2 font-mon">{{$admin->name}} </td>
-                            <td class="border border-slate-700 p-2 font-mon">{{$admin->email}} </td>
-                            <td class="border border-slate-700 p-2 font-mon min-w-20"><a href="/user/delete/{{$admin->id}}"><button class=" bg-red-600 w-full h-8 rounded-md font-mon hover:scale-95 font-medium hover:bg-red-500 text-white">Delete</button></a></td>
+                            <th scope="col" class="py-3 px-6">id</th>
+                            <th scope="col" class="py-3 px-6">Name</th>
+                            <th scope="col" class="py-3 px-6">Email</th>
+                            <th scope="col" class="py-3 px-6">Delete</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                        </thead>
+                        <tbody>
+                        @foreach($admins as $admin)
+                        <tr class="bg-white border-b">
+                            <td class="py-4 px-6">#{{$admin->id}}</td>
+                            <td class="py-4 px-6">{{$admin->name}}</td>
+                            <td class="py-4 px-6">{{$admin->email}}</td>
+                            <td class="py-4 px-6"><a href="/user/delete/{{$admin->id}}"><button class=" bg-red-600 w-full h-8 rounded-md font-mon hover:scale-95 font-medium hover:bg-red-500 text-white">Delete</button></a></td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    </div>        
    </main>
 
    </body>
