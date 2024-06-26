@@ -33,8 +33,15 @@ class SiteController extends Controller
         ]);
     }
 
-    public function store(SiteRequest $request)
+    public function store(Request $request)
     {
+        $formFields = $request->validate([
+                'description'=>'required |string',
+                'titre'=>'required|string',
+                'lien'=>'required| string',
+                'id_cat'=>'required',
+                'logo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:30000'
+        ]);
         $site = new Site();
         $site->lien = $request->lien;
         $site->titre = $request->titre;

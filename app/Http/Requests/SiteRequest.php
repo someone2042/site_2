@@ -24,11 +24,10 @@ class SiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'required|string',
+            'description' => 'required |string',
             'titre' => 'required|string',
-            'lien' => 'required|string',
+            'lien' => 'required| string',
             'id_cat' => 'required'
-
         ];
     }
     public function failedValidation(Validator $validator)
@@ -46,7 +45,6 @@ class SiteRequest extends FormRequest
             'logo.string' => "le logo  doit être un string",
             'lien.required ' => 'lien non fourni',
             'lien.string' => "le lien  doit être un string",
-
         ];
     }
 }
