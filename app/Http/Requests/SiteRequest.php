@@ -27,7 +27,6 @@ class SiteRequest extends FormRequest
             'titre'=>'required|string',
             'lien'=>'required| string',
             'id_cat'=>'required'
-
         ];
     }
     public function failedValidation(Validator $validator){
@@ -44,7 +43,6 @@ class SiteRequest extends FormRequest
             'logo.string'=>"le logo  doit être un string",
             'lien.required '=>'lien non fourni',
             'lien.string'=>"le lien  doit être un string",
-            
         ];
     }
 }
