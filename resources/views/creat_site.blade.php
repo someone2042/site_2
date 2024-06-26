@@ -158,7 +158,7 @@
                     </div>
                     <div class="mb-6">
                         <label for="categorier" class="inline-block text-lg mb-2">Catégorie </label>
-                        <select name="categorier" class="border border-gray-200 rounded p-2 w-full" id="Catégorie">
+                        <select name="categorier" class="border border-gray-200 rounded p-2 w-full" id="categorier">
                             @foreach ($categorier as $item)
                                 <option value="{{$item->id}}">{{$item->categorier}} </option>
                                 @endforeach
