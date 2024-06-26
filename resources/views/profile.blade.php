@@ -67,7 +67,7 @@
                         EDITER LE PROFIL
                     </h2>
                 </header>
-                <form action="/user/update" method="POST" enctype="multipart/form-data">
+                <form action="/user/update/{{auth()->user()->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-6">

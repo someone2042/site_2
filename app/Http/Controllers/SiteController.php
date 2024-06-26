@@ -23,7 +23,7 @@ class SiteController extends Controller
     public function site($id)
     {
         $sites = Site::where('id_cat', $id)->paginate(10);
-        $category=categorier::where('id',$id)->first();;
+        $category = categorier::where('id', $id)->first();;
         if (!$category) {
             return abort(404);
         }
@@ -35,13 +35,15 @@ class SiteController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $formFields = $request->validate([
-                'description'=>'required |string',
-                'titre'=>'required|string',
-                'lien'=>'required| string',
-                'id_cat'=>'required',
-                'logo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:30000'
+            'description' => 'required |string',
+            'titre' => 'required|string',
+            'lien' => 'required| string',
+            'categorier' => 'required',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000'
         ]);
+        // dd($formFields);
         $site = new Site();
         $site->lien = $request->lien;
         $site->titre = $request->titre;
@@ -73,8 +75,16 @@ class SiteController extends Controller
             'categorier' => categorier::all()
         ]);
     }
-    function update(SiteRequest $request, Site $site)
+    function update(Request $request, Site $site)
     {
+        $formFields = $request->validate([
+            'description' => 'required |string',
+            'titre' => 'required|string',
+            'lien' => 'required| string',
+            'categorier' => 'required',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000'
+        ]);
+        // dd($formFields);
         $site->lien = $request->lien;
         $site->titre = $request->titre;
         $site->description = $request->description;

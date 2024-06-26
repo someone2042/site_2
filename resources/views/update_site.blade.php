@@ -139,6 +139,9 @@
                         </center>
                     </div>
                     <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
+                    @error('logo')
+                        <p class="text-red-500 test-xs mt-1">{{$message}}</p>
+                    @enderror 
                     <div class="mb-6">
                         <label for="title" class="inline-block text-lg mb-2">Titre </label>
                         <input type="text" value="{{$site->titre}}" class="border border-gray-200 rounded p-2 w-full" name="titre"
