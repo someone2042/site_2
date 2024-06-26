@@ -44,6 +44,14 @@ class UserController extends Controller
           }
           return abort(403, 'you are not a super admin');
      }
+     function modif()
+     {
+          if (auth()->user()->role == 'S') {
+               $admin=User::where('role','=','A');
+               return View('admin',['admins'=>$admin]);
+          }
+          return abort(403, 'you are not a super admin');
+     }
      function profile()
      {
           if (auth()->user()){

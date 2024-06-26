@@ -18,8 +18,9 @@ Route::post('/authentification', [LoginController::class, 'authentification'])->
 Route::get('/register', [UserController::class, 'register'])->name('register')->middleware('auth');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 Route::post('/store', [UserController::class, 'store'])->name('store')->middleware('auth');
-Route::put('/user/update', [UserController::class, 'update'])->name('update')->middleware('auth');
+Route::put('/user/update/{user}', [UserController::class, 'update'])->name('update')->middleware('auth');
 Route::delete('/user/delete/{user}', [UserController::class, 'delete'])->name('delete')->middleware('auth');
+Route::delete('/update/admin', [UserController::class, 'modif'])->name('delete')->middleware('auth');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
