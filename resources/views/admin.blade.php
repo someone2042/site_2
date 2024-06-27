@@ -61,9 +61,9 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" class="py-3 px-6">id</th>
-                        <th scope="col" class="py-3 px-6">Name</th>
+                        <th scope="col" class="py-3 px-6">Nom</th>
                         <th scope="col" class="py-3 px-6">Email</th>
-                        <th scope="col" class="py-3 px-6">Delete</th>
+                        <th scope="col" class="py-3 px-6">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +76,7 @@
                                 <a href="/user/delete/{{ $admin->id }}">
                                     <button
                                         class=" bg-red-600 w-full h-8 rounded-md font-mon hover:scale-95 font-medium hover:bg-red-500 text-white">
-                                        Delete
+                                        Supprimer
                                     </button>
                                 </a>
                             </td>
