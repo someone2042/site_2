@@ -178,6 +178,9 @@
                         @error('categorier')
                             <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                         @enderror
+                        @error('new_cat')
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="tite" class="inline-block text-lg mb-2">Description du site Web</label>

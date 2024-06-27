@@ -141,6 +141,7 @@ class SiteController extends Controller
             'titre' => 'required|string',
             'lien' => 'required| string',
             'categorier' => 'required',
+            'new_cat' => 'nullable|unique:categoriers,categorier',
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000'
         ]);
 
