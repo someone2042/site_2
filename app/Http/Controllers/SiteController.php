@@ -16,13 +16,13 @@ class SiteController extends Controller
     public function index()
     {
         return View('welcome', [
-            'site' => Site::paginate(8),
+            'site' => Site::paginate(8)->onEachSide(-1),
             'categorier' => categorier::all()
         ]);
     }
     public function site($id)
     {
-        $sites = Site::where('id_cat', $id)->paginate(10);
+        $sites = Site::where('id_cat', $id)->paginate(8)->onEachSide(-1);
         $category = categorier::where('id', $id)->first();;
         if (!$category) {
             return abort(404);

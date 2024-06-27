@@ -72,8 +72,13 @@
                             <td class="py-4 px-6">#{{ $admin->id }}</td>
                             <td class="py-4 px-6">{{ $admin->name }}</td>
                             <td class="py-4 px-6">{{ $admin->email }}</td>
-                            <td class="py-4 px-6"><a href="/user/delete/{{ $admin->id }}"><button
-                                        class=" bg-red-600 w-full h-8 rounded-md font-mon hover:scale-95 font-medium hover:bg-red-500 text-white">Delete</button></a>
+                            <td class="py-4 px-6">
+                                <a href="/user/delete/{{ $admin->id }}">
+                                    <button
+                                        class=" bg-red-600 w-full h-8 rounded-md font-mon hover:scale-95 font-medium hover:bg-red-500 text-white">
+                                        Delete
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

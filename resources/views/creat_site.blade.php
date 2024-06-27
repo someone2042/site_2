@@ -12,6 +12,7 @@
     <link href="{{ asset('img/logo.png') }}" rel="icon">
 
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
         tailwind.config = {
             theme: {
