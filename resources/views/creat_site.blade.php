@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="{{asset('img/logo.png')}}" rel="icon">
+    <link href="{{ asset('img/logo.png') }}" rel="icon">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,9 +26,8 @@
     <title>Ajouter Site</title>
 </head>
 <style>
-    
     .tabAnim {
-    z-index: 1;
+        z-index: 1;
     }
 
     #private:checked~div {
@@ -38,6 +37,7 @@
     #public:checked~div {
         --tw-translate-x: 100%;
     }
+
     .profile-pic {
         border-radius: 50%;
         height: 150px;
@@ -106,9 +106,8 @@
         </a>
         <ul class="flex space-x-6 mr-6 text-lg text-white">
             <li>
-                <a href="/logout"
-                    ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                     Se déconnecter</a>
+                <a href="/logout"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Se déconnecter</a>
             </li>
         </ul>
     </nav>
@@ -131,53 +130,55 @@
                     <div class="mb-6">
                         <center>
                             <label for="fileToUpload">
-                                    <div class="profile-pic" id="photo" style="background-image: url('logo.jpg')">
-                                        <!-- <span class="glyphicon glyphicon-camera"></span> -->
-                                        <span>Add Image</span>
-                                    </div>
+                                <div class="profile-pic" id="photo" style="background-image: url('logo.jpg')">
+                                    <!-- <span class="glyphicon glyphicon-camera"></span> -->
+                                    <span>Add Image</span>
+                                </div>
                             </label>
                         </center>
                     </div>
                     <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
                     @error('logo')
-                    <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                    @enderror 
+                        <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="mb-6">
                         <label for="title" class="inline-block text-lg mb-2">Titre du site Web </label>
                         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="titre"
-                            placeholder="title"  />
+                            placeholder="title" />
                         @error('titre')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    
+
                     <div class="mb-6">
                         <label for="company" class="inline-block text-lg mb-2">Lien </label>
                         <input type="url" class="border border-gray-200 rounded p-2 w-full" name="lien"
-                            placeholder="Lien"  />
+                            placeholder="Lien" />
                         @error('lien')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="categorier" class="inline-block text-lg mb-2">Catégorie </label>
                         <select name="categorier" class="border border-gray-200 rounded p-2 w-full" id="categorier">
                             @foreach ($categorier as $item)
-                                <option value="{{$item->id}}">{{$item->categorier}} </option>
-                                @endforeach
-                                <option value="-1">Autre </option>
-                            </select>
-                            <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full" name="new_cat" placeholder="Nouvelle Catégorie"  />
+                                <option value="{{ $item->id }}">{{ $item->categorier }} </option>
+                            @endforeach
+                            <option value="-1">Autre </option>
+                        </select>
+                        <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full"
+                            name="new_cat" placeholder="Nouvelle Catégorie" />
                         @error('categorier')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="tite" class="inline-block text-lg mb-2">Description du site Web </label>
-                        <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52" placeholder="description"></textarea>
+                        <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52"
+                            placeholder="description"></textarea>
                         @error('description')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="mb-6">
@@ -195,24 +196,24 @@
     const writeIn = document.getElementById('writeIn');
 
     select.addEventListener('change', function() {
-    if (select.value === '-1') {
-        writeIn.type="text"
-    } else {
-        writeIn.type="hidden"
-    }
+        if (select.value === '-1') {
+            writeIn.type = "text"
+        } else {
+            writeIn.type = "hidden"
+        }
     });
 </script>
 <script>
     const img = document.querySelector('#photo');
     const file = document.querySelector('#fileToUpload');
-    file.addEventListener('change', function () {
+    file.addEventListener('change', function() {
         const choosedFile = this.files[0];
 
         if (choosedFile) {
 
             const reader = new FileReader();
 
-            reader.addEventListener('load', function () {
+            reader.addEventListener('load', function() {
                 img.setAttribute('src', reader.result);
                 img.setAttribute('style', "background-image: url('" + reader.result + "')");
             });
@@ -222,4 +223,5 @@
         }
     });
 </script>
+
 </html>

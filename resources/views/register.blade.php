@@ -55,10 +55,8 @@
         </a>
         <ul class="flex space-x-6 mr-6 text-lg text-white">
             <li>
-                <a href="/login"
-                    ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Login</a
-                >
+                <a href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Login</a>
             </li>
         </ul>
     </nav>
@@ -79,18 +77,20 @@
                         <label for="name" class="inline-block text-lg mb-2">
                             Nom
                         </label>
-                        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" value="{{old('name')}}"/>
+                        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+                            value="{{ old('name') }}" />
                         @error('name')
-                        <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
+                            <p class="text-red-500 text-xs w-80 mt-1">{{ $message }} </p>
                         @enderror
                     </div>
 
                     <div class="mb-6">
                         <label for="email" class="inline-block text-lg mb-2">Email</label>
-                        <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email" value="{{old('email')}}" />
+                        <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email"
+                            value="{{ old('email') }}" />
                         <!-- Error Example -->
                         @error('email')
-                        <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
+                            <p class="text-red-500 text-xs w-80 mt-1">{{ $message }} </p>
                         @enderror
                     </div>
 
@@ -100,7 +100,7 @@
                         </label>
                         <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password" />
                         @error('password')
-                        <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
+                            <p class="text-red-500 text-xs w-80 mt-1">{{ $message }} </p>
                         @enderror
                     </div>
 
@@ -111,8 +111,8 @@
                         <input type="password" class="border border-gray-200 rounded p-2 w-full"
                             name="password_confirmation" />
                         @error('password_confirmation')
-                            <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
-                        @enderror 
+                            <p class="text-red-500 text-xs w-80 mt-1">{{ $message }} </p>
+                        @enderror
 
                     </div>
                     <div class="mb-6">
@@ -120,16 +120,18 @@
                             <p class="w-full inline-block text-lg">Rôle:</p>
                             <div class="w-full">
                                 <label for="A">Admin</label>
-                                <input type="radio" id='A' class="border border-gray-200 rounded p-2" name="role" value="A" />
+                                <input type="radio" id='A' class="border border-gray-200 rounded p-2"
+                                    name="role" value="A" />
                             </div>
                             <div class="w-full">
                                 <label for="S">Super Admin</label>
-                                <input type="radio" id='S' class="border border-gray-200 rounded p-2" name="role" value="S" />
+                                <input type="radio" id='S' class="border border-gray-200 rounded p-2"
+                                    name="role" value="S" />
                             </div>
                         </div>
                         @error('role')
-                            <p class="text-red-500 text-xs w-80 mt-1">{{$message}} </p>
-                        @enderror 
+                            <p class="text-red-500 text-xs w-80 mt-1">{{ $message }} </p>
+                        @enderror
                     </div>
 
                     <div class="mb-6">

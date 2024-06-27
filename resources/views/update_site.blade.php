@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="{{asset('img/logo.png')}}" rel="icon">
+    <link href="{{ asset('img/logo.png') }}" rel="icon">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,9 +26,8 @@
     <title>Modifier Site</title>
 </head>
 <style>
-    
     .tabAnim {
-    z-index: 1;
+        z-index: 1;
     }
 
     #private:checked~div {
@@ -38,6 +37,7 @@
     #public:checked~div {
         --tw-translate-x: 100%;
     }
+
     .profile-pic {
         border-radius: 50%;
         height: 150px;
@@ -73,28 +73,29 @@
         display: none;
         cursor: pointer;
     }
+
     ::-webkit-scrollbar {
-                width: 7px;
-                height: 7px;
-                border-radius: 10px;
+        width: 7px;
+        height: 7px;
+        border-radius: 10px;
 
-            }
+    }
 
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background-color: #97c5d9;
-                box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-            }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-color: #97c5d9;
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    }
 
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #1967D2;
-                border-radius: 10px;
-            }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #1967D2;
+        border-radius: 10px;
+    }
 
-            ::-webkit-scrollbar-corner {
-                display: none;
-            }
+    ::-webkit-scrollbar-corner {
+        display: none;
+    }
 </style>
 
 <body class="mb-48 bg-gray-100">
@@ -104,9 +105,8 @@
         </a>
         <ul class="flex space-x-6 mr-6 text-lg text-white">
             <li>
-                <a href="/logout"
-                    ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Se déconnecter</a >
+                <a href="/logout"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Se déconnecter</a>
             </li>
         </ul>
     </nav>
@@ -124,74 +124,79 @@
                     </h2>
                 </header>
 
-                <form action="/site/update/{{$site->id}}" method="POST" enctype="multipart/form-data">
+                <form action="/site/update/{{ $site->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-6">
                         <center>
                             <label for="fileToUpload">
                                 {{-- @dd($site->logo) --}}
-                                    <div class="profile-pic" id="photo" style="background-image: url('{{asset("/storage/".$site->logo)}}')">
-                                        <!-- <span class="glyphicon glyphicon-camera"></span> -->
-                                        <span>Changer Image</span>
-                                    </div>
+                                <div class="profile-pic" id="photo"
+                                    style="background-image: url('{{ asset('/storage/' . $site->logo) }}')">
+                                    <!-- <span class="glyphicon glyphicon-camera"></span> -->
+                                    <span>Changer Image</span>
+                                </div>
                             </label>
                         </center>
                     </div>
                     <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
                     @error('logo')
-                        <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                    @enderror 
+                        <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                    @enderror
                     <div class="mb-6">
                         <label for="title" class="inline-block text-lg mb-2">Titre </label>
-                        <input type="text" value="{{$site->titre}}" class="border border-gray-200 rounded p-2 w-full" name="titre"
-                            placeholder="title"  />
+                        <input type="text" value="{{ $site->titre }}"
+                            class="border border-gray-200 rounded p-2 w-full" name="titre" placeholder="title" />
                         @error('titre')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    
+
                     <div class="mb-6">
                         <label for="company" class="inline-block text-lg mb-2">Lien </label>
-                        <input type="url" value="{{$site->lien}}" class="border border-gray-200 rounded p-2 w-full" name="lien"
-                            placeholder="Lien"  />
+                        <input type="url" value="{{ $site->lien }}"
+                            class="border border-gray-200 rounded p-2 w-full" name="lien" placeholder="Lien" />
                         @error('lien')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="categorier" class="inline-block text-lg mb-2">Catégorie </label>
-                        <select name="categorier" value="{{$site->categorier}}" class="border border-gray-200 rounded p-2 w-full" id="categorier">
+                        <select name="categorier" value="{{ $site->categorier }}"
+                            class="border border-gray-200 rounded p-2 w-full" id="categorier">
                             @foreach ($categorier as $item)
-                                @if ($item->id==$site->id_cat)
-                                    <option value="{{$item->id}}" selected >{{$item->categorier}} </option>
+                                @if ($item->id == $site->id_cat)
+                                    <option value="{{ $item->id }}" selected>{{ $item->categorier }} </option>
                                 @else
-                                    <option value="{{$item->id}}">{{$item->categorier}} </option>
+                                    <option value="{{ $item->id }}">{{ $item->categorier }} </option>
                                 @endif
                             @endforeach
                             <option value="-1">Autre </option>
-                            </select>
-                            <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full" name="new_cat" placeholder="new categorier"  />
+                        </select>
+                        <input type="hidden" id="writeIn" class="border border-gray-200 rounded mt-2 p-2 w-full"
+                            name="new_cat" placeholder="new categorier" />
                         @error('categorier')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="tite" class="inline-block text-lg mb-2">Description du site Web</label>
-                        <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52" placeholder="description">{{$site->description}}</textarea>
+                        <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52"
+                            placeholder="description">{{ $site->description }}</textarea>
                         @error('description')
-                            <p class="text-red-500 test-xs mt-1">{{$message}}</p>
-                        @enderror                    
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="mb-6 flex justify-between">
                         <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-laravel2 text-lg">
                             Modifier
                         </button>
-                        <input type="submit" value="Supprimer" class="bg-laravel text-white rounded py-2 px-4 hover:bg-laravel2 text-lg" form="hadik">
+                        <input type="submit" value="Supprimer"
+                            class="bg-laravel text-white rounded py-2 px-4 hover:bg-laravel2 text-lg" form="hadik">
                     </div>
                 </form>
-                <form action="/site/delete/{{$site->id}}" method="POST" id="hadik" onsubmit="warnning()">
+                <form action="/site/delete/{{ $site->id }}" method="POST" id="hadik" onsubmit="warnning()">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -204,24 +209,24 @@
     const writeIn = document.getElementById('writeIn');
 
     select.addEventListener('change', function() {
-    if (select.value === '-1') {
-        writeIn.type="text"
-    } else {
-        writeIn.type="hidden"
-    }
+        if (select.value === '-1') {
+            writeIn.type = "text"
+        } else {
+            writeIn.type = "hidden"
+        }
     });
 </script>
 <script>
     const img = document.querySelector('#photo');
     const file = document.querySelector('#fileToUpload');
-    file.addEventListener('change', function () {
+    file.addEventListener('change', function() {
         const choosedFile = this.files[0];
 
         if (choosedFile) {
 
             const reader = new FileReader();
 
-            reader.addEventListener('load', function () {
+            reader.addEventListener('load', function() {
                 img.setAttribute('src', reader.result);
                 img.setAttribute('style', "background-image: url('" + reader.result + "')");
             });
@@ -233,8 +238,9 @@
 
     function warnning() {
         if (!confirm("Voulez-vous vraiment supprimer ce site ?")) {
-        event.preventDefault();
+            event.preventDefault();
         }
     }
 </script>
+
 </html>
