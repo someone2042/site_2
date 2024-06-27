@@ -99,7 +99,6 @@
         <nav class=" sticky top-0 flex justify-between items-center h-16 bg-laravel">
             <div class="flex">
                 <button id="toggleButton" class="ml-2 mr-4" style="display:block">       
-                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg fill="#FFF" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                         viewBox="0 0 460.775 460.775" xml:space="preserve">
@@ -112,7 +111,6 @@
                     </svg>
                 </button>
                 <button id="showButton" style="display:none" class="ml-2 mr-4">
-                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
                     <path fill="#FFF" fill-rule="evenodd" d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"/>
                     </svg>
@@ -288,13 +286,11 @@
                             @auth
                                 <input type="text" name="categorier2" id="input-{{$item->id}}" value="{{$item->categorier}}" class="ml-4 w-full capitalize hidden" />
                                 <button type="button" id="b-{{$item->id}}" onclick="toggleEdit({{$item->id}})" class="">
-                                    <?xml version="1.0" ?>
                                     <svg class="feather feather-edit" fill="none" height="24" stroke="#1967D2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                     </svg></button>
                                 <button type="submit" id="save-{{$item->id}}" class=" hidden">
-                                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.75 6L7.5 5.25H16.5L17.25 6V19.3162L12 16.2051L6.75 19.3162V6ZM8.25 6.75V16.6838L12 14.4615L15.75 16.6838V6.75H8.25Z" fill="#1967D2"/>
                                     </svg>
@@ -391,7 +387,6 @@
                                     <a href="/site/update/{{$item->id}}">
                                     <p class="p-2 w-fit rounded-md bg-white border-laravel border hover:scale-95 text-white">
 
-                                        <?xml version="1.0" encoding="iso-8859-1"?>
                                         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                         <svg fill="#1967D2" height="22px" width="22px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                             viewBox="0 0 54 54" xml:space="preserve">
