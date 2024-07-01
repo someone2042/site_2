@@ -64,17 +64,19 @@ class SiteController extends Controller
         $formFields = $request->validate([
             'description' => 'required |string',
             'titre' => 'required|string',
-            'lien' => 'required| string',
+            'lien' => 'required',
             'categorier' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
             'new_cat' => 'nullable|string|min:3',
         ], [
-            'description.required ' => 'description non fourni',
-            'description.string' => "le description  doit être un string",
-            'titre.required ' => 'Titre non fourni',
-            'titre.string' => "le Titre  doit être un string",
-            'lien.required ' => 'lien non fourni',
-            'lien.string' => "le lien  doit être un string",
+            'logo.max' => 'le logo ne doit pas dépasser 3 Mo',
+            'description.required' => 'la description est obligatoire',
+            'description.string' => 'la description  doit être un string',
+            'titre.required' => 'le titre est obligatoire',
+            'titre.string' => 'le titre  doit être un string',
+            'lien.required' => 'le lien est obligatoire',
+            'categorier.required' => 'la catégorie est obligatoire',
+
         ]);
 
         // Create a new Site instance
