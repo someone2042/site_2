@@ -66,7 +66,7 @@ class SiteController extends Controller
             'titre' => 'required|string',
             'lien' => 'required| string',
             'categorier' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000'
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
 
         // Create a new Site instance
@@ -83,11 +83,16 @@ class SiteController extends Controller
         // Check if new category was added
         if ($request->categorier == -1) {
             // Create a new category
-            $category = new categorier();
-            $category->categorier = strtolower($request->new_cat);
-            $category->save();
-            // Assign category to the site
-            $site->id_cat = $category->id;
+            $cat = categorier::where('categorier', $request->new_cat)->first();
+            if (is_null($cat)) {
+                $category = new categorier();
+                $category->categorier = strtolower($request->new_cat);
+                $category->save();
+                // Assign category to the site
+                $site->id_cat = $category->id;
+            } else {
+                $site->id_cat = $cat->id;
+            }
         } else {
             // Assign existing category to the site
             $site->id_cat =  $request->categorier;
