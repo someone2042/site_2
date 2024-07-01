@@ -138,7 +138,9 @@
                             </label>
                         </center>
                     </div>
-                    <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
+                    <input type="File" name="logo" onchange="validateSize(this)"
+                        accept="image/png, image/gif, image/jpeg" id="fileToUpload">
+                    <p id="error" class="text-red-500 test-xs mt-1 hidden">le logo ne doit pas dépasser 3 Mo</p>
                     @error('logo')
                         <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -226,6 +228,19 @@
 
         }
     });
+</script>
+<script>
+    function validateSize(input) {
+        const fileSize = input.files[0].size / 1024 / 1024; // in MiB
+        if (fileSize > 3) {
+            // $(file).val(''); //for clearing with Jquery
+            document.getElementById("fileToUpload").value = '';
+            document.getElementById("error").classList.toggle('hidden');
+        } else {
+            document.getElementById("error").classList.toggle('hidden');
+            // Proceed further
+        }
+    }
 </script>
 
 </html>
