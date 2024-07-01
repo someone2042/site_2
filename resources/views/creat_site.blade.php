@@ -145,7 +145,7 @@
                     <div class="mb-6">
                         <label for="title" class="inline-block text-lg mb-2">Titre du site Web </label>
                         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="titre"
-                            placeholder="title" />
+                            placeholder="title" value="{{ old('titre') }}" />
                         @error('titre')
                             <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -154,7 +154,7 @@
                     <div class="mb-6">
                         <label for="company" class="inline-block text-lg mb-2">Lien </label>
                         <input type="url" class="border border-gray-200 rounded p-2 w-full" name="lien"
-                            placeholder="Lien" />
+                            placeholder="Lien" value="{{ old('lien') }}" />
                         @error('lien')
                             <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -172,11 +172,14 @@
                         @error('categorier')
                             <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                         @enderror
+                        @error('new_cat')
+                            <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
                         <label for="tite" class="inline-block text-lg mb-2">Description du site Web </label>
                         <textarea name="description" id="" class="border border-gray-200 rounded p-2 w-full h-52"
-                            placeholder="description"></textarea>
+                            placeholder="description">{{ old('description') }}</textarea>
                         @error('description')
                             <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                         @enderror

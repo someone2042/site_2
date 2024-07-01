@@ -67,6 +67,14 @@ class SiteController extends Controller
             'lien' => 'required| string',
             'categorier' => 'required',
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
+            'new_cat' => 'nullable|string|min:3',
+        ], [
+            'description.required ' => 'description non fourni',
+            'description.string' => "le description  doit être un string",
+            'titre.required ' => 'Titre non fourni',
+            'titre.string' => "le Titre  doit être un string",
+            'lien.required ' => 'lien non fourni',
+            'lien.string' => "le lien  doit être un string",
         ]);
 
         // Create a new Site instance
