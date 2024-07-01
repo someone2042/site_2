@@ -139,7 +139,9 @@
                             </label>
                         </center>
                     </div>
-                    <input type="File" name="logo" accept="image/png, image/gif, image/jpeg" id="fileToUpload">
+                    <input type="File" onchange="validateSize(this)" name="logo"
+                        accept="image/png, image/gif, image/jpeg" id="fileToUpload">
+                    <p id="error" class="text-red-500 test-xs mt-1 hidden">le logo ne doit pas dépasser 3 Mo</p>
                     @error('logo')
                         <p class="text-red-500 test-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -242,6 +244,19 @@
     function warnning() {
         if (!confirm("Voulez-vous vraiment supprimer ce site ?")) {
             event.preventDefault();
+        }
+    }
+</script>
+<script>
+    function validateSize(input) {
+        const fileSize = input.files[0].size / 1024 / 1024; // in MiB
+        if (fileSize > 3) {
+            // $(file).val(''); //for clearing with Jquery
+            document.getElementById("fileToUpload").value = '';
+            document.getElementById("error").classList.remove('hidden');
+        } else {
+            document.getElementById("error").classList.add('hidden');
+            // Proceed further
         }
     }
 </script>

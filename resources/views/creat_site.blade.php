@@ -235,9 +235,9 @@
         if (fileSize > 3) {
             // $(file).val(''); //for clearing with Jquery
             document.getElementById("fileToUpload").value = '';
-            document.getElementById("error").classList.toggle('hidden');
+            document.getElementById("error").classList.remove('hidden');
         } else {
-            document.getElementById("error").classList.toggle('hidden');
+            document.getElementById("error").classList.add('hidden');
             // Proceed further
         }
     }

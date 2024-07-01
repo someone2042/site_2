@@ -93,6 +93,7 @@ class SiteController extends Controller
         // Check if new category was added
         if ($request->categorier == -1) {
             // Create a new category
+            $request->validate(['new_cat' => 'min:3'], ['new_cat.min' => 'La catégorie doit comporter au moins 3 caractères.']);
             $cat = categorier::where('categorier', $request->new_cat)->first();
             if (is_null($cat)) {
                 $category = new categorier();
@@ -154,10 +155,19 @@ class SiteController extends Controller
         $formFields = $request->validate([
             'description' => 'required |string',
             'titre' => 'required|string',
-            'lien' => 'required| string',
+            'lien' => 'required',
             'categorier' => 'required',
-            'new_cat' => 'nullable|unique:categoriers,categorier',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000'
+            'new_cat' => 'nullable|min:3',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072'
+        ], [
+            'logo.max' => 'le logo ne doit pas dépasser 3 Mo',
+            'description.required' => 'la description est obligatoire',
+            'description.string' => 'la description  doit être un string',
+            'titre.required' => 'le titre est obligatoire',
+            'titre.string' => 'le titre  doit être un string',
+            'lien.required' => 'le lien est obligatoire',
+            'categorier.required' => 'la catégorie est obligatoire',
+
         ]);
 
         // Update site attributes
@@ -173,11 +183,17 @@ class SiteController extends Controller
         // Check if new category was added
         if ($request->categorier == -1) {
             // Create a new category
-            $category = new categorier();
-            $category->categorier = strtolower($request->new_cat);
-            $category->save();
-            // Assign category to the site
-            $site->id_cat = $category->id;
+            $request->validate(['new_cat' => 'min:3'], ['new_cat.min' => 'La catégorie doit comporter au moins 3 caractères.']);
+            $cat = categorier::where('categorier', $request->new_cat)->first();
+            if (is_null($cat)) {
+                $category = new categorier();
+                $category->categorier = strtolower($request->new_cat);
+                $category->save();
+                // Assign category to the site
+                $site->id_cat = $category->id;
+            } else {
+                $site->id_cat = $cat->id;
+            }
         } else {
             // Assign existing category to the site
             $site->id_cat =  $request->categorier;
